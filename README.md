@@ -2,6 +2,8 @@
 
 Targeted mainly for LinVST bridge testing and it's improvement.
 
+You can check list on [Project page](https://keybreak.github.io/linux-vst-compatibility-list/), use search or filters to see current plugin state.
+
 
 ## Testing enviroment
 
