@@ -2290,7 +2290,7 @@ var databaseCore = [
                 'Wine': '4.13-staging',
                 'Bridge': 'LinVST',
                 'Status': [
-                    'Crash on start',
+                    'Override: msvcp60.dll (native, builtin)',
                 ],
             },
             {
