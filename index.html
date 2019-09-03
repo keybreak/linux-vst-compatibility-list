@@ -101,7 +101,8 @@
                                 </template>
 
                                 <p v-else v-for="bug in item[col]">
-                                    <i class="icon ban red"></i>
+                                    <i class="icon exclamation triangle orange" v-if="bug.toLowerCase().indexOf('override') > -1"></i>
+                                    <i class="icon ban red" v-else></i>
                                     {{ bug }}
                                 </p>
 
