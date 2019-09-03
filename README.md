@@ -12,6 +12,7 @@ OS: Manjaro x86_64
 DE: Deepin
 Driver: nvidia
 WINE: 4.13-staging amd64
+DAW: Renoise
 ```
 
 
