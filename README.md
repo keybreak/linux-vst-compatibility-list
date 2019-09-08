@@ -37,17 +37,26 @@ win7
 ```
 
 
-## Winetricks additional
+## Winetricks extended
 
-Some plugins installers might throw errors:
+**Problem 1**
+Sometimes plugins installer might throw errors:
 
 ```
 Runtime Error (at -1:0):
 Cannot Import dll: C:\users\user\Temp\is-VADAE.tmp\isskin.dll
-
 ```
 
-To fight this error use winetricks:
+```
+fixme:msg:ChangeWindowMessageFilter c046 00000001
+fixme:win:DisableProcessWindowsGhosting : stub
+err:module:import_dll Library MFC42.DLL (which is needed by L"C:\\users\\ready2rumbelx\\Temp\\is-L6E45.tmp\\isskin.dll") not found
+fixme:xrender:XRender_AlphaBlend Unable to AlphaBlend without Xrender
+fixme:xrender:XRender_AlphaBlend Unable to AlphaBlend without Xrender
+```
+
+**Solution**
+Use winetricks:
 
 ```
 mfc42
