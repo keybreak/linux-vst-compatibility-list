@@ -11,8 +11,7 @@ You can check list on [Project page](https://keybreak.github.io/linux-vst-compat
 OS: Manjaro x86_64
 DE: Deepin
 Driver: nvidia
-WINE: 4.11-staging amd64 (and higher)
-DAW: Renoise
+WINE: 4.13-staging amd64
 ```
 
 
@@ -35,4 +34,22 @@ tahoma
 wininet
 fontsmooth=rgb
 win7
+```
+
+
+## Winetricks additional
+
+Some plugins installers might throw errors:
+
+```
+Runtime Error (at -1:0):
+Cannot Import dll: C:\users\user\Temp\is-VADAE.tmp\isskin.dll
+
+```
+
+To fight this error use winetricks:
+
+```
+mfc42
+vcrun6
 ```
