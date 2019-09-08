@@ -40,6 +40,7 @@ win7
 ## Winetricks extended
 
 **Problem 1**
+
 Sometimes plugins installer might throw errors:
 
 ```
@@ -56,6 +57,7 @@ fixme:xrender:XRender_AlphaBlend Unable to AlphaBlend without Xrender
 ```
 
 **Solution**
+
 Use winetricks:
 
 ```
