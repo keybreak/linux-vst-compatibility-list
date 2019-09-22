@@ -41,7 +41,13 @@
         <div class="right menu">
             <div class="ui item">
                 <div class="ui toggle checkbox">
-                    <input name="public" type="checkbox" v-model="onlyBugs">
+                    <input name="setup" type="checkbox" v-model="onlySetup">
+                    <label>Only setup</label>
+                </div>
+            </div>
+            <div class="ui item">
+                <div class="ui toggle checkbox">
+                    <input name="bugs" type="checkbox" v-model="onlyBugs">
                     <label>Only bugs</label>
                 </div>
             </div>
@@ -101,7 +107,8 @@
                                 </template>
 
                                 <p v-else v-for="bug in item[col]">
-                                    <i class="icon ban red"></i>
+                                    <i class="icon exclamation triangle orange" v-if="bug.toLowerCase().indexOf('override') > -1"></i>
+                                    <i class="icon ban red" v-else></i>
                                     {{ bug }}
                                 </p>
 
@@ -127,16 +134,15 @@
 
 <script type="text/javascript">
 
-    var coreData = {
-        searchAll: '',
-        onlyBugs: false,
-        database: databaseCore,
-    };
-
 
     var app = new Vue({
         el: '#app',
-        data: coreData,
+        data: {
+            searchAll: '',
+            onlyBugs: false,
+            onlySetup: false,
+            database: databaseCore,
+        },
         computed: {
             vstNum: function() {
                 var category = this.database,
@@ -165,9 +171,17 @@
 
                 var filtered = array;
 
+                if (!!this.onlySetup) {
+
+                    filtered = filtered.filter(function(item) {
+
+                        return item['Setup'] === true;
+                    });
+                }
+
                 if (!!this.onlyBugs) {
 
-                    filtered = array.filter(function(item) {
+                    filtered = filtered.filter(function(item) {
 
                         return item['Status'] !== 'Perfect';
                     });
