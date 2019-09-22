@@ -19,13 +19,14 @@ WINE: 4.13-staging amd64
 
 1. Install / register VST2 plugin
 2. Scan with DAW
-3. Load
+3. Load plugin
 4. Open / close GUI
 5. Tweak GUI & all of it's elements
 6. Switch presets
 7. Heavily automate multiple parameters
 8. Save DAW project
 9. Load DAW project / check if changes are persistent / plugin works afterwards / Presets are switching
+10. Unload plugin
 
 
 ## Winetricks defaults
