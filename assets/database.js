@@ -4574,7 +4574,9 @@ var databaseCore = [
                 'Type': 'x64',
                 'Wine': '4.15-staging',
                 'Bridge': 'LinVST',
-                'Status': 'Perfect',
+                'Status': [
+                    {level: 3, text: "hd2d1 crash on open"},
+                ],
                 'Setup': true,
             },
             {
