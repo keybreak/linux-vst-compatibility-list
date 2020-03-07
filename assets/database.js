@@ -5987,6 +5987,16 @@ var databaseCore = [
             },
             {
                 'Dev': 'Image-Line',
+                'Name': 'Effector',
+                'Version': '2.72',
+                'Type': 'x64',
+                'Wine': '5.1-staging',
+                'Bridge': 'LinVST',
+                'Status': 'Perfect',
+                'Setup': true,
+            },
+            {
+                'Dev': 'Image-Line',
                 'Name': 'EQUO',
                 'Version': '2.1.32',
                 'Type': 'x64',

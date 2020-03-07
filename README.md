@@ -15,6 +15,11 @@ WINE: 4.13-staging amd64
 ```
 
 
+## User database
+
+Once my personal list will be finished and structure of project will be refined - there will be user database opened for new additions.
+
+
 ## Testing methodology
 
 1. Install / register VST2 plugin
