@@ -83,3 +83,10 @@ Use winetricks:
 mfc42
 vcrun6
 ```
+
+
+## Donations
+
+If you find this project valuable and want to make a donation, feel free to do so:
+
+[LibrePay | PayPal](https://liberapay.com/keybreak/donate)
