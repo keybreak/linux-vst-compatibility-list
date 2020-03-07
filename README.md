@@ -9,9 +9,9 @@ You can check list on [Project page](https://keybreak.github.io/linux-vst-compat
 
 ```
 OS: Manjaro x86_64
-DE: Deepin
+DE: Deepin | KDE
 Driver: nvidia
-WINE: 4.13-staging amd64
+WINE: 4.13-staging amd64 (and higher)
 ```
 
 
