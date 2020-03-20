@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, shrink-to-fit=no">
     <title>Wine VST</title>
     <link href="assets/favicon.ico" rel="shortcut icon"/>
-    <link href="assets/semantic.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/semantic.min.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body class="nojs">
@@ -39,18 +39,19 @@
             </span>
         </a>
         <div class="right menu">
-            <div class="ui item">
-                <div class="ui toggle checkbox">
-                    <input name="setup" type="checkbox" v-model="onlySetup">
-                    <label>Only setup</label>
-                </div>
-            </div>
-            <div class="ui item">
-                <div class="ui toggle checkbox">
-                    <input name="bugs" type="checkbox" v-model="onlyBugs">
-                    <label>Only bugs</label>
-                </div>
-            </div>
+            <a class="ui item"
+                v-bind:class="[{'active': !!sidebarOpen}]"
+                v-on:click="sidebarOpen = !sidebarOpen"
+            >
+                <i class="filter icon"></i>
+                Filters
+                &nbsp;&nbsp;
+                <template v-for="(filter, index) in activeFilters">
+                    <i class="icon"
+                        v-bind:class="[filter.icon, filter.color]"
+                    ></i>
+                </template>
+            </a>
             <div class="ui right aligned category search item">
                 <div class="ui transparent icon input">
                     <input class="prompt" placeholder="Search... (Name, Dev)" type="text" v-model="searchAll">
@@ -59,6 +60,49 @@
             </div>
         </div>
     </div>
+
+    <div class="ui borderless sidebar right vertical menu transition fixed" style="z-index: 1;"
+        v-bind:class="[{'visible': !!sidebarOpen}]"
+    >
+        <br><br><br>
+
+        <div class="ui">
+            <div class="item">
+                <button class="ui icon button basic circular"
+                    v-on:click="sidebarOpen = !sidebarOpen"
+                >
+                    <i class="icon close"></i>
+                </button>
+            </div>
+        </div>
+
+        <template v-for="(menu, index) in filterMenu">
+            <br>
+            <div class="item header">
+                <i class="icon"
+                    v-bind:class="menu.icon"
+                ></i>
+                {{ menu.category }}
+            </div>
+            <a class="item"
+                v-for="item in menu.items"
+                v-bind:class="[item.color, {'active': activeState(item, menu.category, activeFilters)}]"
+                v-on:click="updateFilter({
+                    name: item.name,
+                    color: item.color,
+                    icon: menu.icon,
+                    type: menu.category,
+                    value: item.value,
+                })"
+            >
+                <div class="ui empty circular label"
+                    v-bind:class="item.color"
+                ></div>
+                {{ item.name }}
+            </a>
+        </template>
+    </div>
+
 
     <div class="ui divider"></div>
     <div class="ui divider"></div>
@@ -82,8 +126,9 @@
                         <th v-for="(col, index) in category.cols"
                             v-bind:class="[
                                 {
-                                    'three wide': index <= 1,
-                                    'five wide': index == 6,
+                                    'two wide': index == 0,
+                                    'three wide': index == 1,
+                                    'four wide': index == 8,
                                 }
                             ]"
                         >
@@ -95,19 +140,17 @@
                     <tr v-for="item in searchSimple(category, dbFiltered(category, category.items), 'Name', searchAll)">
                         <td v-for="col in category.cols">
 
-                            <template v-if="col === 'Name'">
-                                <span>{{ item[col] }}</span>
+                            <template v-if="col === 'Program'">
+                                <span v-for="program in item[col]">
+                                    {{ program }}
+                                </span>
                             </template>
 
                             <template v-else-if="col === 'Status'">
 
-                                <template v-if="!Array.isArray(item[col])">
-                                    <i class="icon check circle outline green"></i>
-                                    {{ item[col] }}
-                                </template>
-
-                                <p v-else v-for="bug in item[col]">
-                                    <i class="icon exclamation triangle orange" v-if="bug.level == 1"></i>
+                                <p v-for="bug in item[col]">
+                                    <i class="icon check circle outline green" v-if="bug.level == 0"></i>
+                                    <i class="icon exclamation triangle yellow" v-if="bug.level == 1"></i>
                                     <i class="icon exclamation orange" v-if="bug.level == 2"></i>
                                     <i class="icon ban red" v-if="bug.level == 3"></i>
                                     {{ bug.text }}
@@ -120,6 +163,11 @@
                             </template>
                         </td>
                     </tr>
+                    <tr v-if="category.number == 0">
+                        <td>
+                            <h4>No match found</h4>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -130,19 +178,88 @@
 </div>
 
 
-<script src="assets/database.js" type="text/javascript"></script>
 <script src="assets/vue.min.js" type="text/javascript"></script>
+<script src="database/core_VST.js" type="text/javascript"></script>
+<script src="database/core_VSTi.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 
+    var showCols = ['Dev', 'Name', 'Version', 'Type', 'License', 'Wine', 'Bridge', 'Program', 'Status'];
 
     var app = new Vue({
         el: '#app',
         data: {
             searchAll: '',
-            onlyBugs: false,
-            onlySetup: false,
-            database: databaseCore,
+            sidebarOpen: false,
+            activeFilters: [],
+            filterMenu: [
+                {
+                    category: 'Status',
+                    icon: 'tags',
+                    items: [
+                        {value: 3, name: 'Error', color: 'red'},
+                        {value: 2, name: 'Warning', color: 'orange'},
+                        {value: 1, name: 'Override', color: 'yellow'},
+                        {value: 0, name: 'Perfect', color: 'green'},
+                    ],
+                },
+                {
+                    category: 'Type',
+                    icon: 'plug',
+                    items: [
+                        {name: 'x64', color: 'teal'},
+                        {name: 'x32', color: 'teal'},
+                    ],
+                },
+                {
+                    category: 'Portable',
+                    icon: 'download',
+                    items: [
+                        {name: true, color: 'blue'},
+                        {name: false, color: 'blue'},
+                    ],
+                },
+                {
+                    category: 'License',
+                    icon: 'dollar',
+                    items: [
+                        {name: 'Paid', color: 'purple'},
+                        {name: 'Free', color: 'purple'},
+                        {name: 'FOSS', color: 'purple'},
+                    ],
+                },
+                {
+                    category: 'Program',
+                    icon: 'terminal',
+                    items: [
+                        {value: 'Renoise', name: 'Renoise', color: 'violet'},
+                        {value: 'Reaper', name: 'Reaper', color: 'violet'},
+                    ],
+                },
+                {
+                    category: 'd2d1',
+                    icon: 'plug',
+                    items: [
+                        {name: true, color: 'pink'},
+                    ],
+                },
+            ],
+            database: [
+                {
+                    title: 'VST',
+                    color: 'orange',
+                    cols: showCols,
+                    number: 0,
+                    items: DB_CORE_VST,
+                },
+                {
+                    title: 'VSTi',
+                    color: 'green',
+                    cols: showCols,
+                    number: 0,
+                    items: DB_CORE_VSTI,
+                },
+            ],
         },
         computed: {
             vstNum: function() {
@@ -168,23 +285,95 @@
 
                 return filtered;
             },
+            updateFilter: function(obj) {
+
+                var filters = this.activeFilters,
+                    index,
+                    indexRemove
+                ;
+
+                for (var i = 0, l = filters.length; i < l; i++) {
+                    if (filters[i].type == obj.type) {
+                        indexRemove = i;
+                    }
+                    if ((filters[i].name == obj.name) && (filters[i].type == obj.type)) {
+                        index = i;
+                    }
+                }
+
+                if (index !== undefined) {
+                    this.removeFilter(filters, index);
+                }
+                else {
+                    if (indexRemove != undefined) {
+                        this.removeFilter(filters, indexRemove);
+                    }
+                    filters.push(obj);
+                }
+            },
+            activeState: function(item, type, arr) {
+                for (var i = 0, l = arr.length; i < l; i++) {
+                    if ((arr[i].type == type) && (arr[i].name == item.name)) {
+                        return true;
+                    }
+                }
+            },
+            removeFilter: function(arr, index) {
+                arr.splice(index, 1);
+            },
             dbFiltered: function(parent, array) {
 
-                var filtered = array;
-
-                if (!!this.onlySetup) {
-
-                    filtered = filtered.filter(function(item) {
-
-                        return item['Setup'] === true;
-                    });
-                }
+                var filtered = array,
+                    showStatus = this.showStatus,
+                    activeFilters = this.activeFilters
+                ;
 
                 if (!!this.onlyBugs) {
 
                     filtered = filtered.filter(function(item) {
-
                         return item['Status'] !== 'Perfect';
+                    });
+                }
+
+                if (activeFilters.length > 0) {
+
+                    filtered = filtered.filter(function(item) {
+                        var activeFilter,
+                            activeFilterArr,
+                            isArr,
+                            show = true,
+                            showArr = true
+                        ;
+
+                        for (var i = 0, l = activeFilters.length; i < l; i++) {
+                            activeFilter = activeFilters[i];
+                            isArr = Array.isArray(item[activeFilter.type]);
+
+                            if (!!isArr) {
+                                for (var j = 0, jl = item[activeFilter.type].length; j < jl; j++) {
+                                    activeFilterArr = item[activeFilter.type][j];
+                                    if (activeFilterArr['level'] == activeFilter.value) {
+                                        showArr = true;
+                                        break;
+                                    }
+                                    else {
+                                        showArr = false;
+                                    }
+                                }
+                                showArr = showArr;
+                            }
+                            else {
+                                if (item[activeFilter.type] === activeFilter.name) {
+                                    show = true;
+                                }
+                                else {
+                                    show = false;
+                                    break;
+                                }
+                            }
+                        }
+
+                        return show && showArr;
                     });
                 }
 
