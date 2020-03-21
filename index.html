@@ -149,10 +149,18 @@
                             <template v-else-if="col === 'Status'">
 
                                 <p v-for="bug in item[col]">
-                                    <i class="icon check circle outline green" v-if="bug.level == 0"></i>
-                                    <i class="icon exclamation triangle yellow" v-if="bug.level == 1"></i>
-                                    <i class="icon exclamation orange" v-if="bug.level == 2"></i>
-                                    <i class="icon ban red" v-if="bug.level == 3"></i>
+                                    <i class="icon check circle outline green"
+                                        v-if="bug.level == 0"
+                                    ></i>
+                                    <i class="icon exclamation triangle yellow"
+                                        v-if="bug.level == 1"
+                                    ></i>
+                                    <i class="icon exclamation orange"
+                                        v-if="bug.level == 2"
+                                    ></i>
+                                    <i class="icon ban red"
+                                        v-if="bug.level == 3"
+                                    ></i>
                                     {{ bug.text }}
                                 </p>
 
@@ -184,7 +192,17 @@
 
 <script type="text/javascript">
 
-    var showCols = ['Dev', 'Name', 'Version', 'Type', 'License', 'Wine', 'Bridge', 'Program', 'Status'];
+    var showCols = [
+        'Dev',
+        'Name',
+        'Version',
+        'Type',
+        'License',
+        'Wine',
+        'Bridge',
+        'Program',
+        'Status',
+    ];
 
     var app = new Vue({
         el: '#app',
@@ -228,14 +246,14 @@
                         {name: 'FOSS', color: 'purple'},
                     ],
                 },
-                {
-                    category: 'Program',
-                    icon: 'terminal',
-                    items: [
-                        {value: 'Renoise', name: 'Renoise', color: 'violet'},
-                        {value: 'Reaper', name: 'Reaper', color: 'violet'},
-                    ],
-                },
+                // {
+                //     category: 'Program',
+                //     icon: 'terminal',
+                //     items: [
+                //         {value: 'Renoise', name: 'Renoise', color: 'violet'},
+                //         {value: 'Reaper', name: 'Reaper', color: 'violet'},
+                //     ],
+                // },
                 {
                     category: 'd2d1',
                     icon: 'plug',
@@ -327,13 +345,6 @@
                     showStatus = this.showStatus,
                     activeFilters = this.activeFilters
                 ;
-
-                if (!!this.onlyBugs) {
-
-                    filtered = filtered.filter(function(item) {
-                        return item['Status'] !== 'Perfect';
-                    });
-                }
 
                 if (activeFilters.length > 0) {
 
