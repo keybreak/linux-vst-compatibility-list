@@ -14642,6 +14642,70 @@ var DB_CORE_VST = [
         'License': 'Paid',
     },
     {
+        'Dev': 'Native Instruments',
+        'Name': 'B4 II FX',
+        'Version': '2.0.4',
+        'Type': 'x32',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 3, text: 'Unable to initialize'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Pro 53 FX',
+        'Version': '3.0.5',
+        'Type': 'x32',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 0, text: 'Perfect'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Spektral delay',
+        'Version': '1.6.0',
+        'Type': 'x32',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 0, text: 'Perfect'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Vokator FX',
+        'Version': '1.2.0',
+        'Type': 'x32',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 0, text: 'Perfect'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
         'Dev': 'NDC Plugs',
         'Name': 'Fragmental',
         'Version': '1.02',

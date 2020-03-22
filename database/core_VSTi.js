@@ -4216,6 +4216,54 @@ var DB_CORE_VSTI = [
         'License': 'Paid',
     },
     {
+        'Dev': 'Native Instruments',
+        'Name': 'B4 II',
+        'Version': '2.0.4',
+        'Type': 'x32',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 0, text: 'Perfect'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Pro 53',
+        'Version': '3.0.5',
+        'Type': 'x32',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 0, text: 'Perfect'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Vokator',
+        'Version': '1.2.0',
+        'Type': 'x32',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 0, text: 'Perfect'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
         'Dev': 'Negspect',
         'Name': 'Atlantis',
         'Version': '0.9r',
