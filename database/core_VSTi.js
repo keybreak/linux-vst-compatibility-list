@@ -4217,6 +4217,22 @@ var DB_CORE_VSTI = [
     },
     {
         'Dev': 'Native Instruments',
+        'Name': 'Absynth',
+        'Version': '5.3.1',
+        'Type': 'x64',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 2, text: 'Auto-installs MVC++ 2013'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
         'Name': 'B4 II',
         'Version': '2.0.4',
         'Type': 'x32',
@@ -4233,6 +4249,87 @@ var DB_CORE_VSTI = [
     },
     {
         'Dev': 'Native Instruments',
+        'Name': 'Battery 3',
+        'Version': '3.2.3',
+        'Type': 'x64',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 2, text: 'Auto-installs MVC++ 2013'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Battery 4',
+        'Version': '4.1.6',
+        'Type': 'x64',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 2, text: 'Auto-installs MVC++ 2013 & 2015'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'FM8',
+        'Version': '1.4.1',
+        'Type': 'x64',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 2, text: 'Auto-installs MVC++ 2013'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Kontakt',
+        'Version': '6.2.2',
+        'Type': 'x64',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 1, text: 'Override: wininet (builtin, native) - only for 1st launch'},
+            {level: 2, text: 'Auto-installs MVC++ 2017'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Massive',
+        'Version': '1.5.5',
+        'Type': 'x64',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 2, text: 'Auto-installs MVC++ 2013 & 2017'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
         'Name': 'Pro 53',
         'Version': '3.0.5',
         'Type': 'x32',
@@ -4243,6 +4340,23 @@ var DB_CORE_VSTI = [
         ],
         'Status': [
             {level: 0, text: 'Perfect'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
+        'Name': 'Reaktor',
+        'Version': '6.3.2',
+        'Type': 'x64',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 1, text: 'Override: wininet (builtin, native) - only for 1st launch'},
+            {level: 2, text: 'Auto-installs MVC++ 2017'},
         ],
         'Portable': false,
         'License': 'Paid',
