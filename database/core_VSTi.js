@@ -4330,6 +4330,23 @@ var DB_CORE_VSTI = [
     },
     {
         'Dev': 'Native Instruments',
+        'Name': 'Massive X',
+        'Version': '1.2.0',
+        'Type': 'x64',
+        'Wine': '5.1-staging',
+        'Bridge': 'LinVST',
+        'Program': [
+            'Renoise',
+        ],
+        'Status': [
+            {level: 3, text: 'Crash on tweaking'},
+            {level: 2, text: 'Auto-installs MVC++ 2017'},
+        ],
+        'Portable': false,
+        'License': 'Paid',
+    },
+    {
+        'Dev': 'Native Instruments',
         'Name': 'Pro 53',
         'Version': '3.0.5',
         'Type': 'x32',
