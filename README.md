@@ -8,7 +8,7 @@ Why?
 
 - Don't believe bullshit of `Microsoft <3 Open-source` !
 
-- Don't believe corporations which profit on you privacy, censors and manipulates your opinion, manipulates perception with AI algorithms and leaks your data directly to agencies.
+- Don't believe corporations which profit on killing your privacy, censors and manipulates your opinion, manipulates perception with AI algorithms and leaks your data directly to agencies.
 
 Microsoft is cancer, and will subvert huge portion of open-source infrastructure by owning **GitHub** and **npm**, don't play in their hands.
 
