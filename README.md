@@ -14,7 +14,7 @@ Microsoft is cancer, and will subvert huge portion of open-source infrastructure
 
 Please, use alternatives like **GitLab** or private git instances, be **FREE**!
 
-## CHOSE FREEDOM
+## CHOOSE FREEDOM
 
 - Use Linux
 - Use FOSS software
